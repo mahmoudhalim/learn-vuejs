@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Cozy Sneakers",
+    "description": "High-quality sneakers that go with everything you wear.",
+    "image": "https://sothebys-com.brightspotcdn.com/dims4/default/292290c/2147483647/strip/false/crop/2535x2535+633+0/resize/900x900!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot.s3.amazonaws.com%2Fdotcom%2F6c%2F66%2Fc2084398488585cab7af454ed3c1%2Fyuk-8647.jpg",
+    "badge": "NEW",
+    "price": 120,
+    "discount": 20,
+    "tags": ["Fashion", "Casual", "Sport"],
+    "stock": 5
+  },
+  {
+    "id": 2,
+    "name": "Running Shoes",
+    "price": 90,
+    "discount": 10,
+    "stock": 3,
+    "image": "https://sothebys-com.brightspotcdn.com/dims4/default/292290c/2147483647/strip/false/crop/2535x2535+633+0/resize/900x900!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot.s3.amazonaws.com%2Fdotcom%2F6c%2F66%2Fc2084398488585cab7af454ed3c1%2Fyuk-8647.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Casual Boots",
+    "price": 150,
+    "discount": 0,
+    "stock": 1,
+    "image": "https://sothebys-com.brightspotcdn.com/dims4/default/292290c/2147483647/strip/false/crop/2535x2535+633+0/resize/900x900!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot.s3.amazonaws.com%2Fdotcom%2F6c%2F66%2Fc2084398488585cab7af454ed3c1%2Fyuk-8647.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Flip Flops",
+    "price": 30,
+    "discount": 50,
+    "stock": 0,
+    "image": "https://sothebys-com.brightspotcdn.com/dims4/default/292290c/2147483647/strip/false/crop/2535x2535+633+0/resize/900x900!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot.s3.amazonaws.com%2Fdotcom%2F6c%2F66%2Fc2084398488585cab7af454ed3c1%2Fyuk-8647.jpg"
+  }
+]
