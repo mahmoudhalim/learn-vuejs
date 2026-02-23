@@ -9,3 +9,8 @@ export interface Product {
   tags?: string[]
   stock: number
 }
+
+export interface CartItem {
+  product: Product
+  quantity: number
+}
