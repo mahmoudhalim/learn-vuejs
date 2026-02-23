@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
+import { useProductStore } from '@/stores/productStore'
 import type { Product } from '@/types'
 
-const props = defineProps<{ products: Product[] }>()
+const productStore = useProductStore()
 
 const finalPrice = (p: Product) =>
   p.discount ? (p.price * (1 - p.discount / 100)).toFixed(2) : p.price.toFixed(2)
@@ -14,7 +15,7 @@ onUnmounted(() => console.log('CarouselBanner unmounted'))
 <template>
   <div class="carousel w-full h-96 relative">
     <div
-      v-for="(product, index) in products"
+      v-for="(product, index) in productStore.products"
       :id="`slide${product.id}`"
       :key="product.id"
       class="carousel-item relative w-full"
@@ -45,12 +46,12 @@ onUnmounted(() => console.log('CarouselBanner unmounted'))
       </div>
       <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
         <a
-          :href="`#slide${products[index === 0 ? products.length - 1 : index - 1]!.id}`"
+          :href="`#slide${productStore.products[index === 0 ? productStore.products.length - 1 : index - 1]!.id}`"
           class="btn btn-circle opacity-80"
           >❮</a
         >
         <a
-          :href="`#slide${products[index === products.length - 1 ? 0 : index + 1]!.id}`"
+          :href="`#slide${productStore.products[index === productStore.products.length - 1 ? 0 : index + 1]!.id}`"
           class="btn btn-circle opacity-80"
           >❯</a
         >

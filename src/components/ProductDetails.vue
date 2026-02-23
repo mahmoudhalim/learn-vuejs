@@ -1,15 +1,22 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue'
 import type { Product } from '@/types'
+import { useCartStore } from '@/stores/cartStore'
 
 const props = defineProps<{ product: Product }>()
-const emit = defineEmits<{ buy: [product: Product] }>()
+
+const cartStore = useCartStore()
 
 const finalPrice = computed(() =>
   props.product.discount
     ? (props.product.price * (1 - props.product.discount / 100)).toFixed(2)
     : props.product.price.toFixed(2),
 )
+
+function handleBuy() {
+  if (props.product.stock <= 0) return
+  cartStore.addToCart(props.product)
+}
 
 onMounted(() => console.log(`ProductDetails mounted: ${props.product.name}`))
 onUnmounted(() => console.log(`ProductDetails unmounted: ${props.product.name}`))
@@ -68,11 +75,7 @@ onUnmounted(() => console.log(`ProductDetails unmounted: ${props.product.name}`)
         </div>
 
         <div class="card-actions mt-4 gap-3">
-          <button
-            class="btn btn-primary btn-lg"
-            :disabled="product.stock === 0"
-            @click="emit('buy', product)"
-          >
+          <button class="btn btn-primary btn-lg" :disabled="product.stock === 0" @click="handleBuy">
             {{ product.stock === 0 ? 'Out of Stock' : 'Buy Now' }}
           </button>
           <button class="btn btn-outline btn-lg">Wishlist</button>

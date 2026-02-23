@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "json-server --watch db.json --port 3001",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -15,6 +16,7 @@
     "format": "oxfmt src/"
   },
   "dependencies": {
+    "pinia": "^3.0.4",
     "vue": "^3.5.28",
     "vue-router": "^4.6.4"
   },
@@ -31,6 +33,7 @@
     "eslint-plugin-oxlint": "~1.46.0",
     "eslint-plugin-vue": "~10.8.0",
     "jiti": "^2.6.1",
+    "json-server": "^1.0.0-beta.9",
     "npm-run-all2": "^8.0.4",
     "oxfmt": "^0.32.0",
     "oxlint": "~1.47.0",

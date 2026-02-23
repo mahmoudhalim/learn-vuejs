@@ -2,10 +2,12 @@
 import { computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Product } from '@/types'
+import { useCartStore } from '@/stores/cartStore'
 
 const props = defineProps<{ product: Product }>()
 
 const router = useRouter()
+const cartStore = useCartStore()
 
 const finalPrice = computed(() =>
   props.product.discount
@@ -23,14 +25,13 @@ onUnmounted(() => console.log(`ProductCard unmounted: ${props.product.name}`))
 
 <template>
   <div
-    class="card bg-base-100 w-full shadow-sm cursor-pointer hover:ring-2 hover:ring-primary rounded-2xl transition-all"
-    @click="goToProduct"
+    class="card bg-base-100 w-full shadow-sm hover:ring-2 hover:ring-primary rounded-2xl transition-all"
   >
-    <figure class="overflow-hidden rounded-t-2xl">
+    <figure class="overflow-hidden rounded-t-2xl cursor-pointer" @click="goToProduct">
       <img :src="product.image" :alt="product.name" class="w-full h-48 object-cover" />
     </figure>
     <div class="card-body">
-      <h2 class="card-title">
+      <h2 class="card-title cursor-pointer" @click="goToProduct">
         {{ product.name }}
         <span v-if="product.badge" class="badge badge-primary">{{ product.badge }}</span>
       </h2>
@@ -42,6 +43,15 @@ onUnmounted(() => console.log(`ProductCard unmounted: ${props.product.name}`))
         <span v-if="product.discount" class="badge badge-success text-white text-xs">
           {{ product.discount }}% off
         </span>
+      </div>
+      <div class="card-actions mt-2">
+        <button
+          class="btn btn-primary btn-sm w-full"
+          :disabled="product.stock === 0"
+          @click="cartStore.addToCart(product)"
+        >
+          {{ product.stock === 0 ? 'Out of Stock' : 'Add to Cart' }}
+        </button>
       </div>
     </div>
   </div>
